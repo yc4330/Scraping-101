@@ -1,0 +1,215 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Captcha &mdash; Scraping 101 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Cloud Server" href="cloud.html" />
+    <link rel="prev" title="Scraping Methods" href="method.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Scraping 101
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Catalog</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="method.html">Scraping Methods</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Captcha</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ways-to-prevent">Ways to prevent</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cookies">Cookies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ip-proxy">IP proxy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ways-to-get-around">Ways to get around</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#human-clicking">Human Clicking</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ways-to-overcome">Ways to overcome</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#auto-clicking">Auto Clicking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ai">AI…?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cloud.html">Cloud Server</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Scraping 101</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Captcha</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/captcha.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="captcha">
+<h1>Captcha<a class="headerlink" href="#captcha" title="Link to this heading"></a></h1>
+<p>Captchas can be really annoying to humans, and it’s even more frustrating when encountered in scraping. Of course, a website developer thinks in the opposite way.</p>
+<p>When a captcha appears or gets complicated and scares you, it’s easy to back down on the whole project, claiming that it’s an impossible mission for your programming level; or to jump down the rabbit hole, trying to find a good way and get lost in the challenge.</p>
+<p>But… is it okay to just live with captchas and still get the data you want?</p>
+<p>At the beginning of a project, it’s easy to say getting as much data as possible for later analyzing. However, bumping into a captcha will be a good time to think about the goal of project, the key research question, the needed data size, and find the most effective way to get the work, or some of the work, done.</p>
+<section id="ways-to-prevent">
+<h2>Ways to prevent<a class="headerlink" href="#ways-to-prevent" title="Link to this heading"></a></h2>
+<section id="cookies">
+<h3>Cookies<a class="headerlink" href="#cookies" title="Link to this heading"></a></h3>
+<p>Many websites use cookies to track user activity and maintain sessions. Commercial websites, compared to government websites, are more likely to encourage users to log in by only providing limited information to unlogged-in users, thus resulting in less content or more frequent captchas.</p>
+<p>To contain login information while scraping, you can find cookies from right-click on the website - inspect - application - storage - cookies.</p>
+<p>A cookie looks like this:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>“name”: “__snaker__id”</p></td>
+<td><p>The name of the cookie (__snaker__id). Websites use this to store unique identifiers for a session or user.</p></td>
+</tr>
+<tr class="row-odd"><td><p>“value”: “xxx”</p></td>
+<td><p>The value of the cookie, which is usually a unique string assigned to the user session.</p></td>
+</tr>
+<tr class="row-even"><td><p>“domain”: “www.zhipin.com”</p></td>
+<td><p>The domain that set the cookie. This cookie is only valid when making requests to www.zhipin.com.</p></td>
+</tr>
+<tr class="row-odd"><td><p>“path”: “/web/user”</p></td>
+<td><p>The path on the website where the cookie is valid. This means the cookie is only sent when accessing URLs under /web/user.</p></td>
+</tr>
+<tr class="row-even"><td><p>“expires”: 1770861984</p></td>
+<td><p>The expiration timestamp (in Unix time). This indicates when the cookie will expire and be deleted from the browser. (This timestamp corresponds to May 11, 2026).</p></td>
+</tr>
+<tr class="row-odd"><td><p>“httpOnly”: false</p></td>
+<td><p>When true, the cookie is only accessible by the server (JavaScript cannot read it). Since this is false, JavaScript can access it using document.cookie.</p></td>
+</tr>
+<tr class="row-even"><td><p>“secure”: false</p></td>
+<td><p>When true, the cookie is only sent over HTTPS. Since it’s false, it can be sent over HTTP as well.</p></td>
+</tr>
+<tr class="row-odd"><td><p>“sameSite”: “Lax”</p></td>
+<td><p>Controls cross-site request behavior: “Lax” allows cookies to be sent on same-site requests and top-level navigation from external sites, but blocks them in most cross-site requests to improve security.</p></td>
+</tr>
+</tbody>
+</table>
+<p>See how to bring the cookies up to the browser in the scraping method session.</p>
+<p>If one user account is restricted and can’t hit the website very often, you can store a bunch of cookies for a bunch of accounts, and use a random one each time when scraping.</p>
+</section>
+<section id="ip-proxy">
+<h3>IP proxy<a class="headerlink" href="#ip-proxy" title="Link to this heading"></a></h3>
+<p>Changing cookies can change login information, but the IP address still remain the same. Some websites track requests based on IP addresses, so they can flag unusual patterns and identify the scraping bots.</p>
+<p>Using a proxy, such as rotating residential or datacenter proxies, can help distribute requests across different IPs, making them appear as if they’re coming from multiple users instead of a single automated script.</p>
+<p>There are some proxy tools like CordCloud.</p>
+</section>
+</section>
+<section id="ways-to-get-around">
+<h2>Ways to get around<a class="headerlink" href="#ways-to-get-around" title="Link to this heading"></a></h2>
+<section id="human-clicking">
+<h3>Human Clicking<a class="headerlink" href="#human-clicking" title="Link to this heading"></a></h3>
+<p>The simplest and most straightforward way to deal with captchas is to wait and manually solve them when they appear. If the scraping task is not too large or frequent, this might be an acceptable tradeoff.</p>
+<p>Automation tools, like Playwright or DrissionPage, allow pausing execution, letting you manually complete captchas before continuing the script.</p>
+<p>It’s okay to have endless loop in the code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">new_tab</span><span class="o">.</span><span class="n">ele</span><span class="p">(</span><span class="s1">&#39;xpath://*[text()=&quot;Click to verify&quot;]&#39;</span><span class="p">):</span> <span class="c1"># If the captcha appears</span>
+    <span class="k">while</span> <span class="n">new_tab</span><span class="o">.</span><span class="n">ele</span><span class="p">(</span><span class="s1">&#39;xpath://*[text()=&quot;Click to verify&quot;]&#39;</span><span class="p">):</span> <span class="c1"># While the captcha exists</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># Wait and wait, until the captcha disappears because you take action</span>
+</pre></div>
+</div>
+<p>And it applies to all situation no matter how fancy the captcha is.</p>
+</section>
+</section>
+<section id="ways-to-overcome">
+<h2>Ways to overcome<a class="headerlink" href="#ways-to-overcome" title="Link to this heading"></a></h2>
+<section id="auto-clicking">
+<h3>Auto Clicking<a class="headerlink" href="#auto-clicking" title="Link to this heading"></a></h3>
+<p>If the captcha is as simple as this, with the same structure and only requires one click on the same button, you can locate the button by css selector and use Playwright or Drissionpage to automatically click it:
+<img alt="" src="_images/click.jpg" /></p>
+<p>In this case, you don’t need to monitor the screen and can go to sleep without worrying taking action every time before the captcha expires in five minutes.</p>
+</section>
+<section id="ai">
+<h3>AI…?<a class="headerlink" href="#ai" title="Link to this heading"></a></h3>
+<p>Some AI tools might get through those fancy captchas, if you aim for very large data and really can’t keep an eye on the script:</p>
+<p>Choose from pictures:
+<img alt="" src="_images/pictures.jpg" /></p>
+<p>Click the patterns in the right order:
+<img alt="" src="_images/order.jpg" /></p>
+<p>But to be honest, I haven’t tried.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="method.html" class="btn btn-neutral float-left" title="Scraping Methods" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cloud.html" class="btn btn-neutral float-right" title="Cloud Server" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Yuqi Cheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

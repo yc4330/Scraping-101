@@ -1,0 +1,168 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloud Server &mdash; Scraping 101 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Captcha" href="captcha.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Scraping 101
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Catalog</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="method.html">Scraping Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="captcha.html">Captcha</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Cloud Server</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#run-the-script-locally">Run the Script Locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-cloud-server-digitalocean">Using Cloud Server (DigitalOcean)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#remote-ssh">Remote SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sizing">Sizing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Scraping 101</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Cloud Server</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/cloud.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="cloud-server">
+<h1>Cloud Server<a class="headerlink" href="#cloud-server" title="Link to this heading"></a></h1>
+<section id="run-the-script-locally">
+<h2>Run the Script Locally<a class="headerlink" href="#run-the-script-locally" title="Link to this heading"></a></h2>
+<p>You don’t need a cloud server if you just want to run the script multiple times automatically with a specific time interval.</p>
+<p>For Mac and Linux, the easiest way can be using <code class="docutils literal notranslate"><span class="pre">cron</span></code>.</p>
+<p>Open Terminal and run:
+<code class="docutils literal notranslate"><span class="pre">crontab</span> <span class="pre">-e</span></code></p>
+<p>Add the following line at the end of the file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>0 8 * * * [python path] [script path]`
+</pre></div>
+</div>
+<p>The five digits describes minute, hour, day, month, and day of the week, in order. <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">8</span> <span class="pre">*</span> <span class="pre">*</span> <span class="pre">*</span></code> means every day at 8 AM.</p>
+<p>For Windows, you can use Windows Task Scheduler.</p>
+</section>
+<section id="using-cloud-server-digitalocean">
+<h2>Using Cloud Server (DigitalOcean)<a class="headerlink" href="#using-cloud-server-digitalocean" title="Link to this heading"></a></h2>
+<p>If the dataset is too big to save in your own computer, a cloud server can be unavoidable. It’s just like using your computer to controll another computer remotely.</p>
+<p>DigitalOcean seems very popular among data journalists. But they all work the same.</p>
+<section id="remote-ssh">
+<h3>Remote SSH<a class="headerlink" href="#remote-ssh" title="Link to this heading"></a></h3>
+<p>By creating a new “droplet” on DigitalOcean, you get an IP address and set up a password for it.</p>
+<p>To get access, in command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">root</span><span class="o">@</span><span class="p">[</span><span class="n">IP</span> <span class="n">address</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>OR <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">user&#64;[IP</span> <span class="pre">address]</span></code></p>
+<p>The default system is Ubuntu, by far the most popular Linux distribution for running web servers. It is primarily designed to run without a graphical interface, making it lightweight and optimized for server use, however not so intuitive to control if not familar with command line.</p>
+<p>You can also use code editor to directly write code on the cloud server. Take VS Code for example: Download Remote-SSH extension; in search bar, type in <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, and select <code class="docutils literal notranslate"><span class="pre">Remote-SSH:</span> <span class="pre">Connect</span> <span class="pre">to</span> <span class="pre">host...</span></code>; type in IP address and the password. The window of code editor is now connected to the host, and you can start to create files.</p>
+</section>
+<section id="sizing">
+<h3>Sizing<a class="headerlink" href="#sizing" title="Link to this heading"></a></h3>
+<p>DigitalOcean starts with $4/month, providing a basic plan with 512MB RAM, 10GB SSD and 0.5TB/month data transfer.</p>
+<p>To re-install scraping automatic tools like Playwright and Drissionpage, this plan is not enough. However, upsizing is very convenient: turn off the droplet, upsize, and turn on again.</p>
+<p>When memory(RAM) is exhausted, the remote connection will be forced to break. It’s always good to set up SWAP (Swap Space) as an overflow area for RAM, allowing the system to keep running when memory is overused. 1-2GB SWAP is recommended for a &lt;2GB RAM.</p>
+<p>Create 1G SWAP:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">fallocate</span> <span class="o">-</span><span class="n">l</span> <span class="mi">1</span><span class="n">G</span> <span class="o">/</span><span class="n">swapfile</span>
+<span class="n">sudo</span> <span class="n">chmod</span> <span class="mi">600</span> <span class="o">/</span><span class="n">swapfile</span>
+<span class="n">sudo</span> <span class="n">mkswap</span> <span class="o">/</span><span class="n">swapfile</span>
+<span class="n">sudo</span> <span class="n">swapon</span> <span class="o">/</span><span class="n">swapfile</span>
+</pre></div>
+</div>
+<p>Make it permanent when restarting the server:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;/swapfile none swap sw 0 0&#39;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fstab</span>
+</pre></div>
+</div>
+<p>Verify if it’s active:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">free</span> <span class="o">-</span><span class="n">m</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="captcha.html" class="btn btn-neutral float-left" title="Captcha" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Yuqi Cheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

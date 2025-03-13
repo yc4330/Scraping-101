@@ -1,0 +1,217 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scraping Methods &mdash; Scraping 101 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Captcha" href="captcha.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Scraping 101
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Catalog</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Scraping Methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#url">URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#request">Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#playwright">Playwright</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#drissionpage">Drissionpage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="captcha.html">Captcha</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud.html">Cloud Server</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Scraping 101</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Scraping Methods</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/method.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="scraping-methods">
+<h1>Scraping Methods<a class="headerlink" href="#scraping-methods" title="Link to this heading"></a></h1>
+<section id="url">
+<h2>URL<a class="headerlink" href="#url" title="Link to this heading"></a></h2>
+<p>URL is the webpage link. It contains “PATH” and searching parameters.</p>
+<p>A good url looks like this:
+<code class="docutils literal notranslate"><span class="pre">https://we.51job.com/pc/search?jobArea=010000&amp;keyword=xxx</span></code></p>
+<p>The part before <code class="docutils literal notranslate"><span class="pre">?</span></code> is the PATH and won’t change.</p>
+<p>The part after <code class="docutils literal notranslate"><span class="pre">?</span></code> are the parameters and indicates the keywords you care, seperating by <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>. In this example, <code class="docutils literal notranslate"><span class="pre">jobArea</span></code> is a parameter name, and <code class="docutils literal notranslate"><span class="pre">010000</span></code> is the code for Beijing, the area we are caring for this time.</p>
+<p>How to know the city code? It varies according to the website developer. You may find a json file containing the city codes by inspecting the website. However, you can just copy the url when you are browsing the website.</p>
+<p>Take another example:
+<code class="docutils literal notranslate"><span class="pre">https://www.zhipin.com/web/geek/job?query=xxx&amp;city=101010100&amp;page=1</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">query</span></code> is the same with <code class="docutils literal notranslate"><span class="pre">keyword</span></code>; this time Beijing has another city code; and there’s a number indicating the page. With or without the page parameter are both common to see. Changing the page number to scrape is easy. Otherwise, you need to figure out how to click the “next” button to get new information in the same url.</p>
+<p>The page information sometimes lives in the PATH too:
+<code class="docutils literal notranslate"><span class="pre">https://bj.ganji.com/job/pn1/?key=xxx</span></code></p>
+</section>
+<section id="request">
+<h2>Request<a class="headerlink" href="#request" title="Link to this heading"></a></h2>
+<p>If the website has an API, whether open or hidden, the best way is always to do GET request then other user-mimicking scraping methods.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="n">cookies</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The key is to find the right url and the parameters for the header. Not using header is okay, but not very polite, and you get higher chances to get blocked.</p>
+<p>Sometimes the website has a tutorial generously written for developers to use their API. If not, you can try right-clicking on anywhere on the website - inspect - network - Fetch/XHR, and do the searching one more time.</p>
+<p>Here is a more detailed tutorial of <a class="reference external" href="https://inspectelement.org/apis.html">Finding Undocumented APIs</a> written by Leon Yin.</p>
+<p>If the request doesn’t work and you want to know the reason:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Request failed: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p>After getting the html by request, then usually parse it with <strong>beautifulsoup</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+<span class="n">job_items</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;job_item&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">job_items</span><span class="p">:</span>
+    <span class="n">job_title</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can locate and select the text by <code class="docutils literal notranslate"><span class="pre">class(.)</span></code> and <code class="docutils literal notranslate"><span class="pre">id(#)</span></code>.</p>
+<p>When the website is not static and changes the class name, you can locate the text by finding its parent element - get the children element list - locate by order.</p>
+<p>For CSS selectors, you may find this <a class="reference external" href="https://frontend30.com/css-selectors-cheatsheet/">cheatsheet</a> little game helpful.</p>
+</section>
+<section id="playwright">
+<h2>Playwright<a class="headerlink" href="#playwright" title="Link to this heading"></a></h2>
+<p>If request doesn’t work, some packages can help you disguise as a user. They can be Selenium, Playwright, or DrissionPage. The newer the package is, the less likely it will be recognized and blocked by the website.</p>
+<p>The package that Columbia Data Journalism Program chooses to teach (at least in 2024) is Playwright. It’s newer then Selenium and can apply in most cases.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">playwright.sync_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">sync_playwright</span>
+<span class="k">with</span> <span class="n">sync_playwright</span><span class="p">()</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
+    <span class="n">browser</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">chromium</span><span class="o">.</span><span class="n">launch</span><span class="p">(</span><span class="n">headless</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">executable_path</span><span class="o">=</span><span class="s2">&quot;/Applications/Google Chrome.app/Contents/MacOS/Google Chrome&quot;</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;--mute-audio&quot;</span><span class="p">])</span> <span class="c1"># for Mac, or find your own path for the browser</span>
+    <span class="n">browser</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">chromium</span><span class="o">.</span><span class="n">launch</span><span class="p">(</span><span class="n">headless</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">executable_path</span><span class="o">=</span><span class="s2">&quot;C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe&quot;</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;--headless=new&quot;</span><span class="p">,</span><span class="s2">&quot;--mute-audio&quot;</span><span class="p">])</span> <span class="c1"># for Windows</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">headless=False</span></code> means you can see the browser running. If you feel confident enough and don’t want to be disturbed, you can turn it to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p>If the website requires an user account, you can store the login information (cookies) in a file and set it as the “context” for your browser.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">context</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">new_context</span><span class="p">(</span><span class="n">storage_state</span><span class="o">=</span><span class="n">storage_state_file</span><span class="p">)</span>
+<span class="n">page</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">new_page</span><span class="p">()</span>
+<span class="n">page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="drissionpage">
+<h2>Drissionpage<a class="headerlink" href="#drissionpage" title="Link to this heading"></a></h2>
+<p>If Playwright doesn’t work either, try Drissionpage instead. In our case, among 6 job seeking platform websites in China, only 1 needs to use Drissionpage. However, using it at the first place might make the job easier.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">DrissionPage</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChromiumPage</span><span class="p">,</span> <span class="n">ChromiumOptions</span>
+<span class="n">page</span> <span class="o">=</span> <span class="n">ChromiumPage</span><span class="p">()</span>
+<span class="n">page</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span>
+<span class="n">page</span><span class="o">.</span><span class="n">wait</span><span class="o">.</span><span class="n">load_start</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Here are some common functions for html parsing, comparing beautifulsoup, playwright and drissionpage:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Beautifulsoup</p></th>
+<th class="head"><p>Playwright</p></th>
+<th class="head"><p>Drissionpage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>.find()</p></td>
+<td><p>.query_selector()</p></td>
+<td><p>.ele()</p></td>
+</tr>
+<tr class="row-odd"><td><p>.find_all()</p></td>
+<td><p>.query_selector_all()</p></td>
+<td><p>.eles()</p></td>
+</tr>
+<tr class="row-even"><td><p>.get()</p></td>
+<td><p>.get_attribute()</p></td>
+<td><p>.attr()</p></td>
+</tr>
+<tr class="row-odd"><td><p>.text()</p></td>
+<td><p>.inner_text()</p></td>
+<td><p>.text()</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="captcha.html" class="btn btn-neutral float-right" title="Captcha" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Yuqi Cheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
