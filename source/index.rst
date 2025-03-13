@@ -25,10 +25,14 @@ Contents
 
 .. toctree::
    :maxdepth: 4
-   :caption: Catalog
+   :caption: Technical Things
 
    method
    captcha
    cloud
+
+.. toctree::
+   :maxdepth: 4
+   :caption: When Scraping Leads to Findings
    stop
    again
