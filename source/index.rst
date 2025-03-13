@@ -33,6 +33,7 @@ Contents
 
 .. toctree::
    :maxdepth: 4
-   :caption: When Scraping Leads to Findings
+   :caption: When Scraping Itself Provides Investigation Findings
+
    stop
    again
