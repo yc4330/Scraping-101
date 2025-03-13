@@ -8,6 +8,8 @@ Scraping 101
 
 Welcome to Scraping 101, a tutorial for journalists and others who want to learn how to get data from the web. 
 
+Project Description....
+
 **Author:** 
 
 - Yuqi Cheng, yc4330@columbia.edu
@@ -25,7 +27,8 @@ Contents
    :maxdepth: 4
    :caption: Catalog
 
-   introduction
    method
    captcha
    cloud
+   stop
+   again
